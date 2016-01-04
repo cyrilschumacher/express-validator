@@ -2,10 +2,13 @@
 var express = require('express');
 var expressValidator = require('../../index');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 var Promise = require('bluebird');
 
 var port = process.env.PORT || 8888;
 var app = express();
+
+var upload = multer({ uploadDir: './uploads' });
 
 module.exports = function(validation) {
 
@@ -35,6 +38,7 @@ module.exports = function(validation) {
   app.get(/\/test(\d+)/, validation);
   app.get('/:testparam?', validation);
   app.post('/:testparam?', validation);
+  app.post('/test/file', upload.any(), validation);
 
   return app;
 };
