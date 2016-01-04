@@ -188,6 +188,9 @@ Same as [req.check()](#reqcheck), but only looks in `req.params`.
 #### req.checkHeaders();
 Only checks `req.headers`. This method is not covered by the general `req.check()`.
 
+#### req.checkFiles();
+Same as [req.check()](#reqcheck), but only looks in `req.files`.
+
 ## Asynchronous Validation
 
 If you need to perform asynchronous validation, for example checking a database if a username has been taken already, your custom validator can return a promise.
